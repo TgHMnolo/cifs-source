@@ -1,41 +1,41 @@
-1! IP file share source 192.168.1.74 [ Windows 8.1 ] & Create Share folder and add user for visit file.
-2! IP mount destination [ Ubuntu Server 16.04.5 LTS x64 ]
+1.!!! IP file share source 192.168.1.74 [ Windows 8.1 ] & Create Share folder and add user for visit file.
+2.!!! IP mount destination [ Ubuntu Server 16.04.5 LTS x64 ]
 
-#1 apt update repository software.  [  #อัพเดท repository ซอฟต์แวร์  ]
+#1. apt update repository software.  [  #อัพเดท repository ซอฟต์แวร์  ]
 	#sudo apt update
-#2 up to you because take a long time. [  #อัพเกรดระบบ หากทำขั้นตอนนี้จะใช้เวลาสักครู่ ]
+#2. up to you because take a long time. [  #อัพเกรดระบบ หากทำขั้นตอนนี้จะใช้เวลาสักครู่ ]
 	#sudo apt upgrade -y
-#2.1 if you're using step 2 we're recommend to reboot system
+#2.1. if you're using step 2 we're recommend to reboot system
 	#sudo init 6 
-#3 Install CIFS Share.	[  #ติดตั้ง  CIFS share ]
+#3. Install CIFS Share.	[  #ติดตั้ง  CIFS share ]
 	sudo apt-get install cifs-utils -y
-4# Create directory mount Directory location on Ubuntu. [  #สร้างไดเรคทอรี่ปลายทางที่ต้องการรับการแชร์ไฟล์บน ubuntu  ]
+#4. Create directory mount Directory location on Ubuntu. [  #สร้างไดเรคทอรี่ปลายทางที่ต้องการรับการแชร์ไฟล์บน ubuntu  ]
 	sudo mkdir /media/winshare
-5# Setting auto mount on system startup.  [  #เพิ่มคำสั่งให้ทำการดึงไฟล์อัตโนมัติเมื่อ Ubuntu ระบบเริ่มทำงาน  ]
+#5. Setting auto mount on system startup.  [  #เพิ่มคำสั่งให้ทำการดึงไฟล์อัตโนมัติเมื่อ Ubuntu ระบบเริ่มทำงาน  ]
 	sudo vi /etc/fstab
-6# Add Comment to end of line.   [  #เพิ่มคำสั่งและตำแหน่งไดเรคทอรี่ปลายทางบน ubuntu ]
+#6. Add Comment to end of line.   [  #เพิ่มคำสั่งและตำแหน่งไดเรคทอรี่ปลายทางบน ubuntu ]
 //192.168.1.74/share /media/winshare cifs credentials=/home/toon/.smbcredentials,iocharset=utf8,sec=ntlm 0 0 
-7# Add Username & Password from Share Windows user.   
+#7. Add Username & Password from Share Windows user.   
 	sudo vi ~/.smbcredentials
-8# Adduser name & Password From User share windows  [  #เพิ่ม user และ  password ใน  .smbcredentials ]
+#8. Adduser name & Password From User share windows  [  #เพิ่ม user และ  password ใน  .smbcredentials ]
 	username=toon
 	password=P@ssw0rd!!##
-9# Save and exit
+#9. Save and exit
 	:wq
-10# Add permission smbcredentials file for root read and write.  [ #แก้ไขระดับการเข้าดูไฟล์ให้เป็น  root]
+#10. Add permission smbcredentials file for root read and write.  [ #แก้ไขระดับการเข้าดูไฟล์ให้เป็น  root]
 	sudo chmod 600 ~/.smbcredentials
-11# start mount file [ #เริ่มต้นเรียกการแชร์โฟลเดอร์ จาก windows มาที่  /media/winshare] 
+#11. start mount file [ #เริ่มต้นเรียกการแชร์โฟลเดอร์ จาก windows มาที่  /media/winshare] 
 	sudo mount -a
-12# test create file or folder & Delete On root user.  [ # ทดสอบ สร้าง ไฟล์ หรือ โฟลเดอร์]
-13# test unmount with command. [ #ทดสอบ ยกเลิกการแชร์โฟลเดอร์  ] 
+#12. test create file or folder & Delete On root user.  [ # ทดสอบ สร้าง ไฟล์ หรือ โฟลเดอร์]
+#13. test unmount with command. [ #ทดสอบ ยกเลิกการแชร์โฟลเดอร์  ] 
 	sudo umount -f /media/winshare
 
-14# And test restart Ubuntu for watch auto mount.
+#14. And test restart Ubuntu for watch auto mount.
 
 !!!! test mount quick command to show result.
 	mount -v -t cifs //192.168.1.74/share /media/winshare \-o credentials=/root/.smbcredentials
 	
-*** It's method for Me to don't like to use USB to send file and don't like to move body.
+*** It's method for Me to don't like to use USB to send file and don't like to move body. ***
 
 Source : https://wiki.ubuntu.com/MountWindowsSharesPermanently
 Source : https://unix.stackexchange.com/questions/124342/mount-error-13-permission-denied
