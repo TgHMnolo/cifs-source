@@ -14,7 +14,7 @@
 #5. Setting auto mount on system startup.  [  #เพิ่มคำสั่งให้ทำการดึงไฟล์อัตโนมัติเมื่อ Ubuntu ระบบเริ่มทำงาน  ]
 	sudo vi /etc/fstab
 #6. Add Comment to end of line.   [  #เพิ่มคำสั่งและตำแหน่งไดเรคทอรี่ปลายทางบน ubuntu ]
-//192.168.1.74/share /media/winshare cifs credentials=/home/toon/.smbcredentials,iocharset=utf8,sec=ntlm 0 0 
+//192.168.1.74/share /media/winshare cifs credentials=/home/toon/.smbcredentials,iocharset=utf8,sec=ntlmssp 0 0 
 #7. Add Username & Password from Share Windows user.   
 	sudo vi ~/.smbcredentials
 #8. Adduser name & Password From User share windows  [  #เพิ่ม user และ  password ใน  .smbcredentials ]
