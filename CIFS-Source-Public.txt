@@ -1,5 +1,5 @@
 1.!!! IP file share source 192.168.1.74 [ Windows 8.1 ] & Create Share folder and add user for visit file.
-2.!!! IP mount destination [ Ubuntu Server 16.04.5 LTS x64 ]
+2.!!! IP mount destination [ Kbuntu Server 19.04 x64 ]
 
 #1. apt update repository software.  [  #อัพเดท repository ซอฟต์แวร์  ]
 	#sudo apt update
