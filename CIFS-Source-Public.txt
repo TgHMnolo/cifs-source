@@ -37,7 +37,5 @@
 	
 *** It's method for Me to don't like to use USB to send file and don't like to move body. ***
 
-Source : https://wiki.ubuntu.com/MountWindowsSharesPermanently
-Source : https://unix.stackexchange.com/questions/124342/mount-error-13-permission-denied
 
 Thank.
